@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ivan Perehynets</Authors>
+    <Description>FakeDataGenerator - helps to build unit tests by generating fake data, similar to real data.</Description>
+    <Copyright>Ivan Perehynets</Copyright>
+    <RepositoryUrl>https://github.com/jonilviv/FakeDataGenerator.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jonilviv/FakeDataGenerator</PackageProjectUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/jonilviv/FakeDataGenerator/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+
+</Project>
