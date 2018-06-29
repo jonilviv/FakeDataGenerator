@@ -9,6 +9,15 @@
     <PackageProjectUrl>https://github.com/jonilviv/FakeDataGenerator</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://raw.githubusercontent.com/jonilviv/FakeDataGenerator/master/LICENSE</PackageLicenseUrl>
+    <ApplicationIcon>Resources\Icon\if_mix_1348643.ico</ApplicationIcon>
+    <PackageIconUrl>https://www.iconfinder.com/icons/1348643/download/png/64</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
 </Project>
