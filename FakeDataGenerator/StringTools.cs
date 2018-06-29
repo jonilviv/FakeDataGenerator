@@ -1,0 +1,89 @@
+﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading;
+
+namespace FakeDataGenerator
+{
+    public static class StringTools
+    {
+        private static int _seed = Environment.TickCount;
+        private static readonly ThreadLocal<Random> __random = new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref _seed)));
+
+        public static string Random()
+        {
+            int length = __random.Value.Next();
+            string result = Random((ushort)length);
+
+            return result;
+        }
+
+        public static string Random(ushort length)
+        {
+            StringBuilder result = new StringBuilder(length);
+
+            while (result.Length < length)
+            {
+                char c = (char)__random.Value.Next(ushort.MaxValue);
+
+                result.Append(c);
+            }
+
+            return result.ToString();
+        }
+
+
+        public static string Random(params UnicodeCategory[] characters)
+        {
+            ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
+            string result = Random(length, characters);
+
+            return result;
+        }
+
+        public static string Random(ushort length, params UnicodeCategory[] characters)
+        {
+            StringBuilder result = new StringBuilder(length);
+
+            while (result.Length < length)
+            {
+                char c = (char)__random.Value.Next(ushort.MaxValue);
+
+                UnicodeCategory uc = char.GetUnicodeCategory(c);
+                bool canAppend = characters.Any(unicodeCategory => uc == unicodeCategory);
+
+                if (canAppend)
+                {
+                    result.Append(c);
+                }
+            }
+
+            return result.ToString();
+        }
+
+
+        public static string Random(ushort minCharacterIndex, ushort maxCharatcerIndex)
+        {
+            ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
+            string result = Random(length, minCharacterIndex, maxCharatcerIndex);
+
+            return result;
+        }
+
+        public static string Random(ushort length, ushort minCharacterIndex, ushort maxCharatcerIndex)
+        {
+            StringBuilder result = new StringBuilder(length);
+
+            while (result.Length < length)
+            {
+                char c = (char)__random.Value.Next(minCharacterIndex, maxCharatcerIndex);
+                result.Append(c);
+            }
+
+            return result.ToString();
+        }
+
+
+    }
+}
