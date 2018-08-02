@@ -63,21 +63,21 @@ namespace FakeDataGenerator
         }
 
 
-        public static string Random(ushort minCharacterIndex, ushort maxCharatcerIndex)
+        public static string Random(ushort minCharacterIndex, ushort maxCharacterIndex)
         {
             ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
-            string result = Random(length, minCharacterIndex, maxCharatcerIndex);
+            string result = Random(length, minCharacterIndex, maxCharacterIndex);
 
             return result;
         }
 
-        public static string Random(ushort length, ushort minCharacterIndex, ushort maxCharatcerIndex)
+        public static string Random(ushort length, ushort minCharacterIndex, ushort maxCharacterIndex)
         {
             StringBuilder result = new StringBuilder(length);
 
             while (result.Length < length)
             {
-                char c = (char)__random.Value.Next(minCharacterIndex, maxCharatcerIndex);
+                char c = (char)__random.Value.Next(minCharacterIndex, maxCharacterIndex);
                 result.Append(c);
             }
 
