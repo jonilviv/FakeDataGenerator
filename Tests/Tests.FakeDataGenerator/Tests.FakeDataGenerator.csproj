@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Names\Tests_GivenNamesTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Randomizer.cs" />
+    <Compile Include="Randomiser.cs" />
     <Compile Include="Tests_StringTools.cs" />
   </ItemGroup>
   <ItemGroup>
