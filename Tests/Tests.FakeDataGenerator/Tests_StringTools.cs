@@ -7,7 +7,7 @@ namespace Tests.FakeDataGenerator
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]
-    public class Tests_StringTools : Randomizer
+    public class Tests_StringTools : Randomiser
     {
         private static readonly Array __unicodeCategoryArray = Enum.GetValues(typeof(UnicodeCategory));
 
