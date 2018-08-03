@@ -35,7 +35,7 @@ namespace Tests.FakeDataGenerator
         public void Test_Random__length_should_return_same_length()
         {
             //Arrange
-            ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
+            ushort length = (ushort)__random.Value.Next(char.MaxValue);
 
             //Action
             string text = StringTools.Random(length);
@@ -51,12 +51,12 @@ namespace Tests.FakeDataGenerator
         {
             //Arrange
             //Action
-            var text = StringTools.Random(ushort.MaxValue);
+            var text = StringTools.Random(char.MaxValue);
 
 
             //Assert
             Assert.IsNotNull(text);
-            Assert.AreEqual(ushort.MaxValue, text.Length);
+            Assert.AreEqual(char.MaxValue, text.Length);
         }
 
         [Test]
@@ -64,12 +64,12 @@ namespace Tests.FakeDataGenerator
         {
             //Arrange
             //Action
-            var text = StringTools.Random(ushort.MinValue);
+            var text = StringTools.Random(char.MinValue);
 
 
             //Assert
             Assert.IsNotNull(text);
-            Assert.AreEqual(ushort.MinValue, text.Length);
+            Assert.AreEqual(char.MinValue, text.Length);
         }
 
         #endregion Random(ushort length)
@@ -125,19 +125,19 @@ namespace Tests.FakeDataGenerator
         {
             //Arrange
             //Action
-            var text = StringTools.Random(ushort.MinValue, UnicodeCategory.UppercaseLetter);
+            var text = StringTools.Random(char.MinValue, UnicodeCategory.UppercaseLetter);
 
 
             //Assert
             Assert.IsNotNull(text);
-            Assert.AreEqual(ushort.MinValue, text.Length);
+            Assert.AreEqual(char.MinValue, text.Length);
         }
 
         [Test]
         public void Test_Random_length_UnicodeCategory__should_return_just_UppercaseLetters_and_ClosePunctuation()
         {
             //Arrange
-            ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
+            ushort length = (ushort)__random.Value.Next(char.MaxValue);
 
 
             //Action
@@ -161,22 +161,7 @@ namespace Tests.FakeDataGenerator
         public void Test_Random_length_UnicodeCategory__all_UnicodeCategories_should_return_correct_values(UnicodeCategory ucc)
         {
             //Arrange
-            int randomMaxValue;
-
-            switch (ucc)
-            {
-                case UnicodeCategory.ParagraphSeparator:
-                case UnicodeCategory.SpaceSeparator:
-                    randomMaxValue = 5;
-
-                    break;
-                default:
-                    randomMaxValue = ushort.MaxValue;
-
-                    break;
-            }
-
-            ushort length = (ushort)__random.Value.Next(randomMaxValue);
+            ushort length = (ushort) __random.Value.Next(char.MaxValue);
 
 
             //Action

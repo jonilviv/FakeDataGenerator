@@ -4,11 +4,11 @@ namespace FakeDataGenerator
 {
     public static class CharacterTools
     {
-        public static UnicodeCategoryCharacter[] UnicodeCategoryCharacters { get; } = new UnicodeCategoryCharacter[ushort.MaxValue];
+        public static UnicodeCategoryCharacter[] UnicodeCategoryCharacters { get; } = new UnicodeCategoryCharacter[char.MaxValue];
 
         static CharacterTools()
         {
-            for (int i = 0; i < ushort.MaxValue; i++)
+            for (int i = 0; i < char.MaxValue; i++)
             {
                 char c = (char)i;
                 UnicodeCategory uc = char.GetUnicodeCategory(c);

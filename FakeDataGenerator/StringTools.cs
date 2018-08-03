@@ -25,7 +25,7 @@ namespace FakeDataGenerator
 
             while (result.Length < length)
             {
-                char c = (char)__random.Value.Next(ushort.MaxValue);
+                char c = (char)__random.Value.Next(char.MaxValue);
 
                 result.Append(c);
             }
@@ -36,7 +36,7 @@ namespace FakeDataGenerator
 
         public static string Random(params UnicodeCategory[] characters)
         {
-            ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
+            ushort length = (ushort)__random.Value.Next(char.MaxValue);
             string result = Random(length, characters);
 
             return result;
@@ -60,7 +60,7 @@ namespace FakeDataGenerator
 
         public static string Random(ushort minCharacterIndex, ushort maxCharacterIndex)
         {
-            ushort length = (ushort)__random.Value.Next(ushort.MaxValue);
+            ushort length = (ushort)__random.Value.Next(char.MaxValue);
             string result = Random(length, minCharacterIndex, maxCharacterIndex);
 
             return result;
