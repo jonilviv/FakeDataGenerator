@@ -6,6 +6,7 @@ using NUnit.Framework;
 namespace Tests.FakeDataGenerator
 {
     [TestFixture]
+    [TestOf(nameof(StringTools))]
     [Parallelizable(ParallelScope.All)]
     public class Tests_StringTools : Randomiser
     {

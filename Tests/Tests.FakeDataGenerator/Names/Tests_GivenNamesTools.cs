@@ -7,6 +7,8 @@ using NUnit.Framework;
 namespace Tests.FakeDataGenerator.Names
 {
     [TestFixture]
+    [TestOf(nameof(GivenNamesTools))]
+    [Parallelizable(ParallelScope.All)]
     public sealed class Tests_GivenNamesTools
     {
         [Test]
