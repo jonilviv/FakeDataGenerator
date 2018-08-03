@@ -81,7 +81,7 @@ namespace Tests.FakeDataGenerator
         {
             //Arrange
             //Action
-            var text = StringTools.Random(UnicodeCategory.UppercaseLetter, UnicodeCategory.ClosePunctuation);
+            string text = StringTools.Random(UnicodeCategory.UppercaseLetter, UnicodeCategory.ClosePunctuation);
 
 
             //Assert
@@ -125,7 +125,7 @@ namespace Tests.FakeDataGenerator
         {
             //Arrange
             //Action
-            var text = StringTools.Random(char.MinValue, UnicodeCategory.UppercaseLetter);
+            string text = StringTools.Random(char.MinValue, UnicodeCategory.UppercaseLetter);
 
 
             //Assert
@@ -161,7 +161,7 @@ namespace Tests.FakeDataGenerator
         public void Test_Random_length_UnicodeCategory__all_UnicodeCategories_should_return_correct_values(UnicodeCategory ucc)
         {
             //Arrange
-            ushort length = (ushort) __random.Value.Next(char.MaxValue);
+            ushort length = (ushort)__random.Value.Next(char.MaxValue);
 
 
             //Action
@@ -181,6 +181,77 @@ namespace Tests.FakeDataGenerator
 
         #endregion Random(ushort length, params char[] characters)
 
+        #region Random(ushort minCharacterIndex, ushort maxCharacterIndex)
 
+        [Test]
+        public void Test_Random_min_greater_than_max_should_raise_exception()
+        {
+            //Arrange
+            //Act
+            //Assert
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => StringTools.Random(char.MaxValue, char.MinValue));
+        }
+
+        [Test]
+        public void Test_Random_min_max_should_return_just_characters_in_range()
+        {
+            //Arrange
+            ushort min = (ushort)__random.Value.Next(0, char.MaxValue / 2);
+            ushort max = (ushort)__random.Value.Next(char.MaxValue / 2, char.MaxValue);
+
+            //Act
+            string result = StringTools.Random(min, max);
+
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.IsNotEmpty(result);
+
+            foreach (char c in result)
+            {
+                Assert.GreaterOrEqual(c, min);
+                Assert.LessOrEqual(c, max);
+            }
+        }
+
+        #endregion Random(ushort minCharacterIndex, ushort maxCharacterIndex)
+
+        #region Random(ushort length, ushort minCharacterIndex, ushort maxCharacterIndex)
+
+        [Test]
+        public void Test_Random_length_min_greater_than_max_should_raise_exception()
+        {
+            //Arrange
+            //Act
+            //Assert
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => StringTools.Random(ushort.MaxValue, char.MaxValue, char.MinValue));
+        }
+
+        [Test]
+        public void Test_Random_length_min_max_should_return_just_characters_in_range()
+        {
+            //Arrange
+            ushort length = (ushort)__random.Value.Next(int.MaxValue);
+            ushort min = (ushort)__random.Value.Next(0, char.MaxValue / 2);
+            ushort max = (ushort)__random.Value.Next(char.MaxValue / 2, char.MaxValue);
+
+            //Act
+            string result = StringTools.Random(length, min, max);
+
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(length, result.Length);
+
+            foreach (char c in result)
+            {
+                Assert.GreaterOrEqual(c, min);
+                Assert.LessOrEqual(c, max);
+            }
+        }
+
+        #endregion Random(ushort length, ushort minCharacterIndex, ushort maxCharacterIndex)
     }
 }
