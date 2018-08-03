@@ -44,19 +44,14 @@ namespace FakeDataGenerator
 
         public static string Random(ushort length, params UnicodeCategory[] characters)
         {
+            char[] chars = CharacterTools.UnicodeCategoryCharacters.Where(x => characters.Contains(x.UnicodeCategory)).Select(x => x.Char).ToArray();
+            int charsLength = chars.Length;
             StringBuilder result = new StringBuilder(length);
 
             while (result.Length < length)
             {
-                char c = (char)__random.Value.Next(ushort.MaxValue);
-
-                UnicodeCategory uc = char.GetUnicodeCategory(c);
-                bool canAppend = characters.Any(unicodeCategory => uc == unicodeCategory);
-
-                if (canAppend)
-                {
-                    result.Append(c);
-                }
+                char c = chars[__random.Value.Next(charsLength)];
+                result.Append(c);
             }
 
             return result.ToString();
