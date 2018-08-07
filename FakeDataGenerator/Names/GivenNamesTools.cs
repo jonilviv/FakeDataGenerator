@@ -113,7 +113,7 @@ namespace FakeDataGenerator.Names
                 return null;
             }
 
-            int i = __random.Next(givenNames.Count() + 1);
+            int i = __random.Next(givenNames.Count());
             GivenName result = givenNames.ElementAt(i);
 
             return result;
